@@ -1,10 +1,14 @@
 package edu.insightr.gildedrose;
-
 public class Inventory {
 
 
+    private Updater updater = new Updater();
 
     private Item[] items;
+
+    public Item[] getItems() {
+        return items;
+    }
 
     public Inventory(Item[] items) {
         super();
@@ -14,19 +18,14 @@ public class Inventory {
     public Inventory() {
         super();
         items = new Item[]{
-                new DexterityVest("+5 Dexterity Vest", 10, 20),
-                new AgedBrie("Aged Brie", 2, 0),
-                new ElixirMongoose("Elixir of the Mongoose", 5, 7),
-                new Sulfuras("Sulfuras, Hand of Ragnaros", 0, 80),
-                new Backstage("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-                new Conjured("Conjured Mana Cake", 3, 6)
+                new Item("+5 Dexterity Vest", 10, 20),
+                new Item("Aged Brie", 2, 0),
+                new Item("Elixir of the Mongoose", 5, 7),
+                new Item("Sulfuras, Hand of Ragnaros", 0, 80),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                new Item("Conjured Mana Cake", 3, 6)
         };
 
-    }
-
-    public Item[] getItems()
-    {
-        return items;
     }
 
     public void printInventory() {
@@ -38,8 +37,15 @@ public class Inventory {
         System.out.println("\n");
     }
 
-    public void updateQuality() {
-/*
+    public void updateQuality()
+    {
+        for(int j =0;j<items.length;j++)
+        {
+            updater.update(items[j],items[j].getName());
+        }
+    }
+
+    public void oldUpdateQuality() {
         for (int i = 0; i < items.length; i++) {
             if (items[i].getName() != "Aged Brie"
                     && items[i].getName() != "Backstage passes to a TAFKAL80ETC concert") {
@@ -90,21 +96,16 @@ public class Inventory {
                 }
             }
         }
-
-*/
-        UpdateVisitor av = new UpdateVisitor();
-        for(int i=0;i<items.length;i++)
-        {
-            items[i].accept(av);
-        }
     }
 
-
     public static void main(String[] args) {
+        Updater updater = new Updater();
         Inventory inventory = new Inventory();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i <20; i++)
+        {
             inventory.updateQuality();
             inventory.printInventory();
         }
+
     }
 }

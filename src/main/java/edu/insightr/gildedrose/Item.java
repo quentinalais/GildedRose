@@ -1,16 +1,13 @@
 package edu.insightr.gildedrose;
 
-public abstract class Item {
+public  class Item {
 
     protected String name;
     protected int sellIn;
 
     protected int quality;
 
-    public Item()
-    {
 
-    }
 
     public Item(String name, int sellIn, int quality) {
 
@@ -19,11 +16,7 @@ public abstract class Item {
         this.quality = quality;
     }
 
-    public void accept( IVisitor v )
-    {
 
-        v.visit(this);
-    }
 
 
     public String getName() {
