@@ -2,9 +2,6 @@ package edu.insightr.gildedrose;
 
 public class DexterityVest extends Item{
 
-    public String name ;
-    public int sellin;
-    public int quality;
 
 
 
@@ -12,9 +9,14 @@ public class DexterityVest extends Item{
     {
         super();
         this.name="+5 Dexterity Vest";
-        this.sellin=10;
+        this.sellIn=10;
         this.quality=20;
 
     }
+
+    public DexterityVest(String name, int sellIn, int quality) {
+        super(name, sellIn, quality);
+    }
+
 
 }

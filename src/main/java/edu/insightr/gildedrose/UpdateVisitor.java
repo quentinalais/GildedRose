@@ -30,68 +30,84 @@ public  class UpdateVisitor implements IVisitor {
 
     public void visit(AgedBrie ab)
     {
+        ab.setSellIn(ab.getSellIn()-1);
+
         if(ab.getQuality()<50)
         {
             ab.setQuality(ab.getQuality()+1);
         }
+
+        if(ab.getSellIn() < 0){
+            if(ab.getQuality() < 50){
+                ab.setQuality(ab.getQuality()+1);
+            }
+        }
+
         if(ab.getQuality()>50)
         {
             ab.setQuality(50);
         }
+
     }
 
-    public void visit(Backstage bs)
+    public void visit(Backstage bk)
     {
-        if(bs.getSellIn()>0  )
-        {
-            if(bs.getQuality()<50)
-            {
-                if(bs.getSellIn()<=10)
-                {
-                    bs.setQuality(bs.getQuality()+2);
-                }
-                if(bs.getSellIn()<=5)
-                {
-                    bs.setQuality(bs.getQuality()+3);
-                }
-                else
-                {
-                    bs.setQuality(bs.getQuality()+1);
+        bk.setSellIn(bk.getSellIn()-1);
 
+        if(bk.sellIn>0 )
+        {
+            if(bk.getQuality()<50)
+            {
+                if(bk.getSellIn() > 10){
+                    bk.setQuality(bk.getQuality()+1);
+                }
+                if(bk.getSellIn()<=10)
+                {
+                    bk.setQuality(bk.getQuality()+2);
+                }
+                if(bk.getSellIn()<=5)
+                {
+                    bk.setQuality(bk.getQuality()+1);
                 }
             }
+
             else
             {
-                bs.setQuality(50);
+                bk.setQuality(50);
             }
         }
         else
         {
-            bs.setQuality(0);
+            bk.setQuality(0);
         }
-
 
     }
 
 
-    public void visit(DexterityVest dv)
+    public void visit(DexterityVest dk)
     {
-        if(dv.getSellIn()>0)
+        dk.setSellIn(dk.getSellIn()-1);
+
+        if(dk.getSellIn()>=0)
         {
-            dv.setQuality(dv.getQuality()-1);
+            dk.setQuality(dk.getQuality()-1);
         }
         else
         {
-            dv.setQuality(dv.getQuality()-2);
+
+            dk.setQuality(dk.getQuality()-2);
+
         }
-        if(dv.getQuality()<0)
+        if(dk.getQuality()<0)
         {
-            dv.setQuality(0);
+            dk.setQuality(0);
         }
     }
 
     public void visit(ElixirMongoose em)
     {
+        em.setSellIn(em.getSellIn()-1);
+
         if(em.getSellIn()>0)
         {
             em.setQuality(em.getQuality()-1);
@@ -108,6 +124,8 @@ public  class UpdateVisitor implements IVisitor {
 
     public void visit(Conjured cj)
     {
+        cj.setSellIn(cj.getSellIn()-1);
+
         if(cj.getSellIn()>0)
         {
             cj.setQuality(cj.getQuality()-2);
