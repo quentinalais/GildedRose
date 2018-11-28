@@ -2,6 +2,8 @@ package edu.insightr.gildedrose;
 
 public class Inventory {
 
+
+
     private Item[] items;
 
     public Inventory(Item[] items) {
@@ -22,6 +24,11 @@ public class Inventory {
 
     }
 
+    public Item[] getItems()
+    {
+        return items;
+    }
+
     public void printInventory() {
         System.out.println("***************");
         for (Item item : items) {
@@ -33,12 +40,19 @@ public class Inventory {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
+
+
             if (items[i].getName() != "Aged Brie"
                     && items[i].getName() != "Backstage passes to a TAFKAL80ETC concert") {
                 if (items[i].getQuality() > 0) {
                     if (items[i].getName() != "Sulfuras, Hand of Ragnaros") {
                         items[i].setQuality(items[i].getQuality() - 1);
                     }
+                    if (items[i].getName()=="Conjured Mana Cake")
+                    {
+                        items[i].setQuality(items[i].getQuality() - 1);
+                    }
+
                 }
             } else {
                 if (items[i].getQuality() < 50) {
@@ -81,8 +95,10 @@ public class Inventory {
                     }
                 }
             }
+
         }
     }
+
 
     public static void main(String[] args) {
         Inventory inventory = new Inventory();
