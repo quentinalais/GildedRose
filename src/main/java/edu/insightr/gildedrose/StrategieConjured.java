@@ -2,7 +2,7 @@ package edu.insightr.gildedrose;
 
 public class StrategieConjured implements UpdateStrategy{
 
-    public void update(Item cj)
+    public int update(Item cj)
     {
         cj.setSellIn(cj.getSellIn()-1);
 
@@ -18,6 +18,8 @@ public class StrategieConjured implements UpdateStrategy{
         {
             cj.setQuality(0);
         }
+
+        return cj.getQuality();
     }
 
 

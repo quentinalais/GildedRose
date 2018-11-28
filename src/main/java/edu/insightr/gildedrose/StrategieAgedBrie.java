@@ -2,7 +2,7 @@ package edu.insightr.gildedrose;
 
 public class StrategieAgedBrie implements UpdateStrategy {
 
-    public void update(Item ab)
+    public int update(Item ab)
     {
         ab.setSellIn(ab.getSellIn()-1);
 
@@ -21,6 +21,6 @@ public class StrategieAgedBrie implements UpdateStrategy {
         {
             ab.setQuality(50);
         }
-
+        return ab.getQuality();
     }
 }

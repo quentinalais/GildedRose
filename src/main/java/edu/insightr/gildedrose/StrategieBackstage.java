@@ -2,7 +2,7 @@ package edu.insightr.gildedrose;
 
 public class StrategieBackstage implements UpdateStrategy {
 
-    public void update(Item bk)
+    public int update(Item bk)
     {
         bk.setSellIn(bk.getSellIn()-1);
 
@@ -32,5 +32,8 @@ public class StrategieBackstage implements UpdateStrategy {
         {
             bk.setQuality(0);
         }
+
+        return bk.getQuality();
+
     }
 }

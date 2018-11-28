@@ -2,5 +2,5 @@ package edu.insightr.gildedrose;
 
 public interface UpdateStrategy {
 
-    public void update(Item i);
+    public int update(Item i);
 }
